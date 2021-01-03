@@ -166,13 +166,24 @@
           </label>
         </div>
       </div>
+      <div class="text-left mt-2 text-base text-black" v-for="(reference, index) in references" :key=index>
+        See also <a :href="reference">{{ reference }}</a>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'FormsDemo'
+  name: 'FormsDemo',
+  data() {
+    return {
+      references: [
+        'https://github.com/tailwindlabs/tailwindcss-forms',
+        'https://tailwindcss-forms.vercel.app/kitchen-sink.html'
+      ]
+    }
+  }
 }
 </script>
 

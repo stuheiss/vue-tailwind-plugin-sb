@@ -1,22 +1,30 @@
 <template>
   <div class="antialiased text-gray-900 px-6">
-    <div class="max-w-xl mx-auto py-12 md:max-w-4xl">
-      <!-- <p>FormsDemo</p>
-      <FormsDemo /> -->
+    <div class="max-w-xl mx-auto py-12 md:max-w-4xl text-left">
+
       <p>t-input</p>
       <t-input
+        placeholder="enter some text"
       />
+
+      <p>t-input</p>
+      <t-input
+        placeholder="enter a password"
+        type='password'
+      />
+
       <p>t-button</p>
       <t-button
-        @click="buttonClicked"
+        @click="openModal"
       >
         Open Modal
       </t-button>
+
       <t-modal
         v-model="showModal"
-        header="Title of the modal"
+        header="Server overload"
       >
-        Content of the modal.
+        Reboot server, are you sure?
         <template v-slot:footer>
           <div class="flex justify-between">
             <t-button type="button">
@@ -28,30 +36,66 @@
           </div>
         </template>
       </t-modal>
+
+      <p>t-button</p>
+      <t-button
+        @click="openDialog"
+      >
+        Open Dialog
+      </t-button>
+
+      <t-dialog
+        v-model="showDialog"
+        icon="question"
+        type="confirm"
+      >
+        <template slot="title">
+          Delete user?
+        </template>
+
+        <p>This action cannot be undone.</p>
+
+        <template slot="icon">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7a4 4 0 11-8 0 4 4 0 018 0zM9 14a6 6 0 00-6 6v1h12v-1a6 6 0 00-6-6zM21 12h-6" /></svg>
+        </template>
+      </t-dialog>
+
+    </div>
+    <div class="text-left mt-2 text-base text-black">
+      Playing with some components from vue-tailwind
+    </div>
+    <div class="text-left mt-2 text-base text-black" v-for="(reference, index) in references" :key=index>
+      See also <a :href="reference">{{ reference }}</a>
     </div>
   </div>
 </template>
 
 <script>
-import { TInput, TButton, TModal } from 'vue-tailwind/dist/components'
-// import FormsDemo from './FormsDemo.vue'
+import { TInput, TButton, TModal, TDialog } from 'vue-tailwind/dist/components'
 
 export default {
   name: 'TWPlay',
   components: {
-    // FormsDemo,
     TModal,
     TInput,
     TButton,
+    TDialog,
   },
   data() {
     return {
-      showModal: false
+      showModal: false,
+      showDialog: false,
+      references: [
+        'https://www.vue-tailwind.com/',
+      ]
     }
   },
   methods: {
-    buttonClicked: function() {
+    openModal: function() {
       this.showModal = !this.showModal;
+    },
+    openDialog: function() {
+      this.showDialog = !this.showDialog;
     }
   }
 }
