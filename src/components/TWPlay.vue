@@ -1,6 +1,6 @@
 <template>
-  <div class="antialiased text-gray-900 px-6">
-    <div class="max-w-xl mx-auto py-12 md:max-w-4xl text-left">
+  <div class="px-6 antialiased text-gray-900">
+    <div class="max-w-xl py-12 mx-auto text-left md:max-w-4xl">
 
       <p>t-input</p>
       <t-input
@@ -60,18 +60,23 @@
         </template>
       </t-dialog>
 
+      <p>t-toggle</p>
+      <t-toggle
+        checked
+      />
+
     </div>
-    <div class="text-left mt-2 text-base text-black">
+    <div class="mt-2 text-base text-left text-black">
       Playing with some components from vue-tailwind
     </div>
-    <div class="text-left mt-2 text-base text-black" v-for="(reference, index) in references" :key=index>
+    <div class="mt-2 text-base text-left text-black" v-for="(reference, index) in references" :key=index>
       See also <a :href="reference">{{ reference }}</a>
     </div>
   </div>
 </template>
 
 <script>
-import { TInput, TButton, TModal, TDialog } from 'vue-tailwind/dist/components'
+import { TInput, TButton, TModal, TDialog, TToggle } from 'vue-tailwind/dist/components'
 
 export default {
   name: 'TWPlay',
@@ -80,6 +85,7 @@ export default {
     TInput,
     TButton,
     TDialog,
+    TToggle,
   },
   data() {
     return {
